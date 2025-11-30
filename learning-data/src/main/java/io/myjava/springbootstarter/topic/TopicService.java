@@ -4,10 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TopicService {
+	
+	@Autowired
+	private TopicRepository topicRepository;
+	
 	
 	
 	private List<Topic>  allTopics = new ArrayList<>(Arrays.asList(
@@ -18,7 +23,11 @@ public class TopicService {
 	
 	public List<Topic> getAllTopics() {
 		
-		return allTopics;
+		List<Topic> allTopics = new ArrayList<>();
+		
+		 topicRepository.findAll().forEach(allTopics::add);
+		 
+		 return allTopics;
 	}
 	
 	
@@ -30,7 +39,8 @@ public class TopicService {
 	
 	
 	public void addTopic(Topic topic) {
-		allTopics.add(topic);
+		
+		topicRepository.save(topic);
 		
 	}
 	

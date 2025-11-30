@@ -1,13 +1,20 @@
 package io.myjava.springbootstarter.topic;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Topic {
 	
+	@Id
 	public String id;
 	public String name;
 	public String descriptions;
 	
 	
-	
+	public Topic() {
+		
+	}
 	
 	public Topic(String id, String name, String descriptions) {
 		super();
