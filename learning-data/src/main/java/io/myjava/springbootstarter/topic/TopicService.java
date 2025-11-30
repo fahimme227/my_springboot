@@ -32,8 +32,7 @@ public class TopicService {
 	
 	
 	public Topic getTopic(String id) {
-		
-		return allTopics.stream().filter(e -> e.getId().equals(id)).findFirst().get();
+		return topicRepository.findById(id).get();
 	}
 	
 	
