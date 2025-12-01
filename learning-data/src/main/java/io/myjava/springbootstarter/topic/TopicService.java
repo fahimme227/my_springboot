@@ -22,11 +22,8 @@ public class TopicService {
 	  ));
 	
 	public List<Topic> getAllTopics() {
-		
 		List<Topic> allTopics = new ArrayList<>();
-		
 		 topicRepository.findAll().forEach(allTopics::add);
-		 
 		 return allTopics;
 	}
 	
@@ -38,29 +35,17 @@ public class TopicService {
 	
 	
 	public void addTopic(Topic topic) {
-		
 		topicRepository.save(topic);
-		
 	}
 	
 	public List<Topic> updateTopic(Topic topic,String id) {
-		for (int index = 0; index < allTopics.size(); index++) 
-		{
-			 Topic filteredTopic = allTopics.get(index);
-			 if(filteredTopic.id.equals(id)) {
-				 allTopics.set(index, topic);
-				 
-			 }
-			
-		}
-		
-		return allTopics;
+		topicRepository.save(topic);
+		return getAllTopics();
 		
 	}
 	
 	public void deleteTopic(String id) {
-		Topic filteredTopic = getTopic(id);
-		allTopics.remove(filteredTopic);
+		topicRepository.deleteById(id);
 	}
 
 }
